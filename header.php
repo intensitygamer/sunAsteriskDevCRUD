@@ -35,7 +35,7 @@
                 </div>
                 <ul class="nav">
                     <li>
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link" href="list_articles.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>List of Articles</p>
                         </a>

@@ -8,6 +8,18 @@
 
 	</style>
 
+	<?php 
+
+
+	$article_id 	= $_GET['article_id'];
+
+	$articles_query = mysqli_query($con, "SELECT * FROM articles WHERE article_id = '$article_id' ");
+
+	$articles_info  = mysqli_fetch_assoc($articles_query);
+
+
+	?>
+
 		<div class="content">
             
 
@@ -28,19 +40,30 @@
 	                           
 	                                	<table class="table table-responsive">
 	                                		<tr><td>Article Title: 
-	                                			<td> <input type="text" name="article_title">
+	                                			<td> <?php echo $articles_info['article_title']; ?>
 	                                		
 	                                		<tr><td>Article Content: 
 
-	                                				<td> <textarea  name="article_content" rows= 15 cols = 50>
-	                                							
-	                                					 </textarea>
+	                                				<td> <?php echo $articles_info['article_content']; ?>
+	                                		
+	                                		<tr><td>Created Date: 
+
+	                                				<td> <?php echo date("M d, Y", strtotime($articles_info['created_date'])); ?>
+	                                		
+	                                		<tr><td>Votes: 
+
+	                                				<td> <?php echo $articles_info['votes']; ?>
+	                                		
+
 	                                  	</table>
 
 	                                </div>
                         			
-                        			<input type="submit" name="submit_article" value="Post" class="btn btn-info">
+                        			<a href="upvote_article.php?article_id=<?php echo $article_id; ?>" class = 'btn btn-success'> Upvote Article </a>
 
+                        			<a href="downvote_article.php?article_id=<?php echo $article_id; ?>" class = 'btn btn-danger'> Downvote Article </a>
+
+  
                         		</form>
                       
                          	</div>
